@@ -16,9 +16,8 @@ const Questions = () => {
         setcount(()=>count++)
         if(result.includes(e.target.value)){
             setcorrect(()=>correct++)
-        }else{
-            setincorrect(()=>incorrect++)
         }
+        
         if(correct>=data.length/2){
             setpass("PASS")
         }else{
