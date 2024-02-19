@@ -1,11 +1,13 @@
-import logo from './logo.svg';
+
+
 import './App.css';
 import Weather from './Component/Weather';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
 
 
 function App() {
+  const [input,setinput]=useState(null)
   const [city,setcity]=useState('')
   const [temp,settemp]=useState(null)
   const [humidity,sethumidity]=useState(null)
@@ -39,8 +41,31 @@ console.log(error)
     let city=e.target.value
    
     setcity(city)
+    if(city===""){
+
+      settemp("")
+      sethumidity("")
+      setspeed("")
+
+     }
 
   }
+
+  const onclick=(e)=>{
+     fetchdata();
+
+
+     setinput(null)
+    
+  }
+const onkeypress=(e)=>{
+console.log(e.key)
+  if(e.key==="Enter"){
+    fetchdata()
+  
+  }
+}
+ 
 
 
 
@@ -52,7 +77,10 @@ console.log(error)
   return (
     <Weather city={city} temp={temp} handlechange={handlechange}
     
-    fetchdata={fetchdata} humididity={humidity} speed={speed} ></Weather>
+    fetchdata={fetchdata} humididity={humidity} speed={speed} input={input} onclick={onclick} 
+    
+    onkeypress={onkeypress}
+    ></Weather>
   );
 }
 
